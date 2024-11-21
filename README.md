@@ -2,8 +2,7 @@
 
 Author: Evgeniia Poliakova (e@polyakova.net)
 
-Below, I've provided some clarifications regarding my thought process and implementation details. During the
-development, my primary focus was on the backend components. I kindly request you to pay backend part more attention.
+During the development, my primary focus was on the backend components. I kindly request you to pay backend part more attention.
 
 
 ## Backend
@@ -17,7 +16,7 @@ while implementing the solution.
 I assumed that in real production application, activities are typically not read directly from resources. To better
 align with this
 practice, I introduced a database. Given that the data structure fits well within the relational database
-paradigm, I selected PostgreSQL as the database (however, we normally consider more data points when we choose db).The
+paradigm, I went with PostgreSQL (however, we normally consider more data points while choosing db).The
 database is seamlessly managed using `docker-compose`, which runs it
 alongside the application. The test data provided in `activities.json` was insufficient for my testing needs. To address
 this, I generated a larger dataset by creating various permutations based on the original activities.json.
@@ -50,7 +49,7 @@ high modularity.
 
 ### Tests
 
-Project contains Unit and integration tests for REST API and main functionality. I've also
+Project contains unit and integration tests for REST API and services. I've also
 adopted [jacoco](https://docs.gradle.org/current/userguide/jacoco_plugin.html) plugin for a better test results
 readability.
 It provides a test report which can be useful to track code coverage. I didn't introduce e2e tests given time constrains
@@ -64,7 +63,7 @@ run checks when the app is building.
 
 ### Potential Improvements
 
-Given the time constraints I had, I simplified the implementation. However, the prod-ready app need include things like:
+Given the time constraints I had, I simplified the implementation. However, the prod-ready app includes things like:
 
 - Rate limiting for API.
 - Proper observability (health metrics, classic metrics for golden signals, business-logic
@@ -72,6 +71,8 @@ Given the time constraints I had, I simplified the implementation. However, the 
 - Better coverage with tests including e2e tests.
 - Modeling APIs using tools like [Smithy](https://smithy.io/2.0/index.html) to support
   better integrity between APIs provider and its consumers.
+- Prod and non-prod environments.
+- Product analitics.
 
 ## Frontend
 
@@ -81,11 +82,12 @@ initial app provided in repository:
 - Outdated and vulnerable node packages.
 - Absence of strong typing.
 - Various console errors.
+- Some redundant files.
 
-I've spent some time trying to resolve them but eventually for the sake of time I concluded that it's easier and faster
-to build app from scratch given that the initial version almost didn't contain any logic. I kept vue.js as a main
+I've spent some time trying to resolve them but eventually for the sake of time I concluded that it will be easier and faster
+to build app from scratch given that the initial version almost didn't contain any business logic. I kept vue.js as a main
 framework which comes now with Typescript and [vite](https://vite.dev/) from the box.
 
-There is no too much say about frontend implementation. I tried to make it simple with very minimalistic layout and
+There is no too much say about implementation itself. I tried to make it simple with very minimalistic html layout and
 almost absence of fancy UI.
 
