@@ -98,6 +98,12 @@ const prev = () => getActivities(state.activities.pageNumber - 1)
     }
   }
 
+  @media screen and (max-width: 768px) {
+    .search {
+      Width: 70%
+    }
+  }
+
   .pagination {
     text-align: right;
     margin: 0 auto;
