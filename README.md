@@ -91,3 +91,9 @@ framework which comes now with Typescript and [vite](https://vite.dev/) from the
 There is no too much say about implementation itself. I tried to make it simple with very minimalistic html layout and
 almost absence of fancy UI.
 
+## How to Run
+
+```sh
+docker-compose up --build
+```
+
