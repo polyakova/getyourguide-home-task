@@ -1,0 +1,31 @@
+version: '3'
+services:
+  backend:
+    build:
+      context: backend
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/demo
+      - SPRING_DATASOURCE_USERNAME=demo
+      - SPRING_DATASOURCE_PASSWORD=demo
+  frontend:
+    build:
+      context: frontend
+    ports:
+      - "8081:8080"
+  db:
+    image: postgres:15.4
+    restart: always
+    ports:
+      - 5433:5432
+    environment:
+      POSTGRES_DB: demo
+      POSTGRES_USER: demo
+      POSTGRES_PASSWORD: demo
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+volumes:
+  pgdata:
